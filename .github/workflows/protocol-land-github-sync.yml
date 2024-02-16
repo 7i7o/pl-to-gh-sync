@@ -2,6 +2,11 @@ name: Protocol Land to GitHub Sync
 
 on:
   workflow_dispatch:
+    inputs:
+      forcePush:
+        description: "Force push"
+        required: false
+        default: "false"
 
 permissions:
   contents: write
@@ -18,5 +23,5 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           WALLET: ${{ secrets.WALLET }}
           PL_REPO_ID: ${{ secrets.PL_REPO_ID }}
-          FORCE_PUSH: ${{ secrets.FORCE_PUSH }}
+          FORCE_PUSH: ${{ inputs.forcePush }}
           GH_REPO_NAME: ${{ github.repository }}
